@@ -246,29 +246,27 @@ def test_view_assignments(student_login):
         assert student_login.usr.view_assignments(course) == assignments_formatted
 
 
-# 11. check_password - System.py
+# 11. test_login_invalid_username - System.py
 # This function ensures that should a user attempt to check a password
 # with an invalid username, the system returns false
 def test_login_invalid_username(grading_system):
     assert not grading_system.login(invalidUsername, invalidPassword)
 
 
-# 12. check_grade_different_course - Staff.py
+# 12. test_check_grade_different_course - Staff.py
 # This function ensures that a Staff Member cannot check the grade
 # of a student in a course that is not theirs
-def test_check_grade_different_course(staff_login):
+def test_Staff_check_grade_different_course(staff_login):
     for course in courses:
         if course not in staff_login.usr.courses:
             assert not staff_login.usr.check_grades(studentUsername, course)
 
 
-# 13. check_grade - Student.py
+# 13. test_check_grade - Student.py
 # This function ensures that should a user attempt to check a grade on
 # an invalid course, the function should raise an error/return NIL
-def test_check_grade_invalid_course(student_login):
+def test_Student_check_grade_invalid_course(student_login):
     assert not student_login.usr.check_grades(invalidCourse)
-
-
 
 
 # 14. add_student - Professor.py
